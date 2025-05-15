@@ -1,2 +1,6 @@
-1>TO USE DEBUG FILE JUST PLACE THE DEBUG FILE IN SAME WORKING FOLDER 
-2>THEN USE EXAMPLE.CPP FOR FURTHER WORKING.
+#  Local Debugging Setup for Competitive Programming
+
+##  How to Use the Debug File
+
+1. **see example.cpp** :
+  
