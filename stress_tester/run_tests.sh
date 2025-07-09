@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Function to compile the C++ program (only if modified)
+
 compile_cpp() {
     if [[ ! -f run.out || run.cpp -nt run.out ]]; then
         echo "Compiling run.cpp..."
@@ -12,14 +12,14 @@ compile_cpp() {
     fi
 }
 
-# Compile initially
+
 compile_cpp
 
-# File paths
+
 INPUT_FILE="input.txt"
 OUTPUT_FILE="output.txt"
 
-# Read input and expected output into arrays
+
 mapfile -t input_cases < "$INPUT_FILE"
 mapfile -t expected_cases < "$OUTPUT_FILE"
 
@@ -41,7 +41,7 @@ while (( input_index < ${#input_cases[@]} && output_index < ${#expected_cases[@]
 
     ((total_cases++))
 
-    # Read input block efficiently
+   
     input_data=""
     while (( input_index < ${#input_cases[@]} && ${#input_cases[$input_index]} )); do
         input_data+="${input_cases[$input_index]}"$'\n'
@@ -49,22 +49,21 @@ while (( input_index < ${#input_cases[@]} && output_index < ${#expected_cases[@]
     done
     ((input_index++)) # Move past separator line
 
-    # Run program with input
+  
     actual_output=$(./run.out <<< "$input_data")
 
-    # Read expected output block efficiently
+   
     expected_output=""
     while (( output_index < ${#expected_cases[@]} && ${#expected_cases[$output_index]} )); do
         expected_output+="${expected_cases[$output_index]}"$'\n'
         ((output_index++))
     done
-    ((output_index++)) # Move past separator line
+    ((output_index++))
 
-    # Trim trailing newlines for direct string comparison
+    
     actual_output=$(echo -n "$actual_output")
     expected_output=$(echo -n "$expected_output")
 
-    # Print Test Case Details
     echo "---------------------------------------------------------"
     echo "Test #$test_case"
     echo "Input:"
@@ -86,7 +85,7 @@ while (( input_index < ${#input_cases[@]} && output_index < ${#expected_cases[@]
     ((test_case++))
 done
 
-# Summary
+
 echo "---------------------------------------------------------"
 echo "Test Summary:"
 echo "$passed_cases / $total_cases tests passed!"
